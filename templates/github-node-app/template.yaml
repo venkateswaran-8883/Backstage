@@ -1,9 +1,9 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: gitlab-node-app
-  title: Node.js App Scaffold to gitlab
-  description: Scaffold a Node.js app and push to gitlab
+  name: github-node-app
+  title: Node.js App Scaffold to github
+  description: Scaffold a Node.js app and push to github
 spec:
   owner: my-team
   type: service
@@ -16,7 +16,7 @@ spec:
           title: Repository name
         group:
           type: string
-          title: GitLab Group (namespace)
+          title: GitHub Group (namespace)
 
   steps:
     - id: fetch-base
@@ -28,10 +28,10 @@ spec:
           name: ${{parameters.repoName}}
 
     - id: publish
-      name: Publish to GitLab Repository
-      action: publish:gitlab
+      name: Publish to GitHub Repository
+      action: publish:github
       input:
-        repoUrl: gitlab.com?group=${{ parameters.group }}&project=${{ parameters.repoName }}
+        repoUrl: github.com?group=${{ parameters.group }}&project=${{ parameters.repoName }}
         description: Node.js app created via Backstage
         defaultBranch: main
 
@@ -45,7 +45,7 @@ spec:
   output:
     links:
       - links:
-        title: GitLab Repository
+        title: GitHub Repository
         icon: repo
         url: '{{ steps["publish"].output.remoteUrl }}'
       - title: Open in Backstage
