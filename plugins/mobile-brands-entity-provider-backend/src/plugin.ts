@@ -1,0 +1,1 @@
+export { moduleMobileBrands } from './index';
