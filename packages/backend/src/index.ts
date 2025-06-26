@@ -7,6 +7,7 @@
  */
 
 import { createBackend } from '@backstage/backend-defaults';
+import { moduleMobileBrands } from '@internal/plugin-mobile-brands-entity-provider-backend';
 
 const backend = createBackend();
 
@@ -51,5 +52,8 @@ backend.add(import('@backstage/plugin-search-backend-module-techdocs'));
 
 // kubernetes
 backend.add(import('@backstage/plugin-kubernetes-backend'));
+
+// mobile-brands-plugin-integration
+backend.add(moduleMobileBrands);
 
 backend.start();
